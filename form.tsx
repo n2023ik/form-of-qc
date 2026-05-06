@@ -49,7 +49,7 @@ type CheckItemProps = {
 
 type SubmitState = 'idle' | 'saving' | 'submitted' | 'error';
 
-const API_URL = (import.meta.env.VITE_API_URL as string | undefined) ?? 'http://localhost:3001';
+const API_URL = import.meta.env.VITE_API_URL as string | undefined;
 const VERSION_OPTIONS = ['3XP', '5XP', 'PHYSICAL'] as const;
 
 const App = () => {
@@ -142,7 +142,7 @@ const App = () => {
   const handleSubmit = async () => {
     if (!API_URL) {
       setSubmitState('error');
-      setSubmitMessage('Set VITE_API_URL to connect this form to the Google Sheets API.');
+      setSubmitMessage('Set VITE_API_URL in Vercel and redeploy the app.');
       return;
     }
 
